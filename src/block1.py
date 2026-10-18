@@ -29,18 +29,23 @@ def simulate_collisions(n, k, experiments):
     return collision_count / experiments
 
 
-n = 365
-experiments = 10000
-k_values = [5, 10, 15, 20, 23, 30, 40, 50, 60, 70, 80]
+def main():
+    n = 365
+    experiments = 10000
+    k_values = [5, 10, 15, 20, 23, 30, 40, 50, 60, 70, 80]
 
-print("Блок 1. Дослідження колізій")
-print(f"Можливих значень: {n}")
-print(f"Експериментів для кожного k: {experiments}")
-print(" k | Теоретична P | Частота W | Похибка")
+    print("Блок 1. Дослідження колізій")
+    print(f"Можливих значень: {n}")
+    print(f"Експериментів для кожного k: {experiments}")
+    print(" k | Теоретична P | Частота W | Похибка")
 
-for k in k_values:
-    probability = collision_probability(n, k)
-    frequency = simulate_collisions(n, k, experiments)
-    error = abs(frequency - probability)
+    for k in k_values:
+        probability = collision_probability(n, k)
+        frequency = simulate_collisions(n, k, experiments)
+        error = abs(frequency - probability)
 
-    print(f"{k:2} | {probability:.6f}      | {frequency:.6f}  | {error:.6f}")
+        print(f"{k:2} | {probability:.6f}      | {frequency:.6f}  | {error:.6f}")
+
+
+if __name__ == "__main__":
+    main()
